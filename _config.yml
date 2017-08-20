@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Andrew Edstrom"
-  avatar           : "/assets/images/avatar.jpg"
+  avatar           : "/assets/images/avatar.JPG"
   bio              : "Software engineer, lover of books"
   location         : "San Francisco Bay Area"
   email            : "andrewedstrom@gmail.com"
