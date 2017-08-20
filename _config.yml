@@ -7,20 +7,20 @@
 
 # Site Settings
 locale                   : "en"
-title                    : "Site Title"
-title_separator          : "-"
-name                     : "Your Name"
-description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+title                    : "Andrew Edstrom"
+title_separator          : "|"
+name                     : "Andrew Edstrom"
+description              : "Homepage for Andrew Edstrom, Back-end Developer at Pivotal Cloud Foundry."
+url                      : "http://andrewedstrom.com"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "andrewedstrom/andrewedstrom.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "disqus"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : andrewedstrom
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -55,7 +55,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : "andrewedstrom"
 facebook:
   username               :
   app_id                 :
@@ -64,32 +64,35 @@ og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : "Person"
+  name                   : "Andrew Edstrom"
+  links:
+   - "https://www.linkedin.com/in/andrewedstrom/"
+   - "https://twitter.com/andrewedstrom"
+   - "https://github.com/andrewedstrom"
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : "google-universal"
   google:
-    tracking_id          :
+    tracking_id          : "UA-104969398-1"
 
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
-  uri              :
+  name             : "Andrew Edstrom"
+  avatar           : "/assets/images/avatar.jpg"
+  bio              : "Software engineer, lover of books"
+  location         : "San Francisco Bay Area"
+  email            : "andrewedstrom@gmail.com"
+  uri              : "http://andrewedstrom.com"
   bitbucket        :
   codepen          :
   dribbble         :
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : "https://github.com/andrewedstrom"
   gitlab           :
   google_plus      :
   keybase          :
@@ -98,10 +101,10 @@ author:
   linkedin         :
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  stackoverflow    : "8216928/andrew-edstrom"
   steam            :
   tumblr           :
-  twitter          :
+  twitter          : "https://twitter.com/andrewedstrom"
   vine             :
   weibo            :
   xing             :
@@ -179,7 +182,7 @@ timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -242,6 +245,8 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
       related: true
+
+github: [metadata]
