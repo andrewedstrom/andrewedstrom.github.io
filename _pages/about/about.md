@@ -2,6 +2,7 @@
 permalink: /about/
 title: "Hi, I'm Andrew"
 layout: single
+author_profile: true
 ---
 
 
