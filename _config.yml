@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Andrew Edstrom"
   avatar           : "/assets/images/avatar.JPG"
-  bio              : "I'm a Back-end Software Engineer in the Bay Area. My interests are in security, blockchain, and AI."
+  bio              : "I'm a back-end Software Engineer in the Bay Area. My interests lie in security, distributed systems, and AI."
   location         : "San Francisco Bay Area"
   email            : "andrewedstrom@gmail.com"
   uri              : "https://andrewedstrom.com"
