@@ -32,7 +32,7 @@ As you develop software, your must regularly consider both of these perspectives
 
 Regularly considering the perspective of the beginner is vital to making software that lasts. It is vital to avoiding tech debt. But it is very difficult to do for someone who has been immersed in a project for so long that they know it inside and out, a.k.a. the people on your team.
 
-That's where you come in. You are real life beginner. There you are in every meeting, asking questions when you don't understand, and in the process holding a mirror up to your team and showing them what their work looks like to someone just getting ramped up. If you're confused, that might be a smell suggesting that that other beginners might be confused. **By asking for clarification when you're confused, you can accidentally shine a light on the things that need fixing, the things no one else sees, revealing ways for the team to improve.**
+That's where you come in. You are real life beginner. There you are in every meeting, asking questions when you don't understand, and in the process holding a mirror up to your team and showing them what their work looks like to someone just getting ramped up. If you're confused, that might be a smell suggesting that that other beginners might be confused. **By asking for clarification, you can accidentally shine a light on the things that need fixing, the things no one else sees, revealing ways for the team to improve.**
 
 
 # An important word of warning
