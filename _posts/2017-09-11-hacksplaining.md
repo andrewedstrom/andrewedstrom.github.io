@@ -54,7 +54,7 @@ Once again, the solution to these problems is generally that you need to sanitiz
 
 It's unbelievably difficult to handle user login and storing passwords correctly, so if you can avoid handling it and just let users log in with Facebook, Google, or GitHub, you'll probably be much better off. Let a larger company with better resources and more experience handle your logins.
 
-If you are in the unlucky position of needing to store your own passwords, then you need to stop everything you're doing and go learn about hashing, the security of different hash functions, salted hashes, and rainbow tables. [This video gives a good high level overview of the difficulty of storing passwords.] (https://youtu.be/8ZtInClXe1Q)
+If you are in the unlucky position of needing to store your own passwords, then you need to stop everything you're doing and go learn about hashing, the security of different hash functions, salted hashes, and rainbow tables. [This video gives a good high level overview of the difficulty of storing passwords.](https://youtu.be/8ZtInClXe1Q)
 
 tl;dr: DO NOT STORE PASSWORDS IN PLAINTEXT. You must hash them. This is **really** important. Furthermore, if you are hashing them with a poor algorithm like SHA1 or MD5, that's almost as bad as plaintext, as [weakly-hashed passwords can often be cracked in under a second.](https://youtu.be/7U-RbOKanYs) And even if you hash them well, you need to add what's called a "salt" so that your hashed passwords can't be cracked with a precalculated lookup table called a "rainbow table" in the case that your database is compromised.
 
