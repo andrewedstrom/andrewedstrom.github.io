@@ -7,7 +7,7 @@ Whenever you start at a new job or rotate onto a team that's working on a proble
 
 This is one of those truths that is easy to accept intellectually, but difficult to believe in your heart. When you're surrounded by people who are more competent than you, it is natural to get imposter syndrome, even if you know you shouldn't. We have all sat in a meeting at some point and felt like the dumbest person in the room, not following the conversation but staying quiet because we were too afraid to speak up and say we didn't know.
 
-In moments like these, there is a strong temptation to hide your lack of understanding. But not speaking up is a huge mistake. It's okay not to know everything. In fact, **not knowing makes you an invaluable asset to your team, and expressing your uncertainty openly is one of the quickest ways you can start providing value in your new role.**
+In moments like these, there is a strong temptation to hide your lack of understanding. But not speaking up is a huge mistake. It's okay not to know everything. In fact, not knowing makes you an invaluable asset to your team, and expressing your uncertainty openly is one of the quickest ways you can start providing value in your new role.
 
 # Not knowing gives you a license to ask questions and improve
 
@@ -43,4 +43,4 @@ One of the fastest ways to destroy your rapport with a new team is to be the guy
 
 Let the others decide if your lack of understanding says something about the health of the team. Don't even bring it up.
 
-> "Greatness comes from humble beginnings; it comes from grunt work. It means you're the least important person in the room—until you change that with results." -Ryan Holiday, *Ego is the Enemy*
+> "Greatness comes from humble beginnings; it comes from grunt work. It means you're the least important person in the room—until you change that with results." - Ryan Holiday, *Ego is the Enemy*
