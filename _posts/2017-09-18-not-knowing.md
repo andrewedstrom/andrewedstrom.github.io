@@ -9,7 +9,7 @@ This is one of those truths that is easy to accept intellectually, but difficult
 
 In moments like these, there is a strong temptation to hide your lack of understanding. But not speaking up is a huge mistake. It's okay not to know everything. In fact, **not knowing makes you an invaluable asset to your team, and expressing your uncertainty openly is one of the quickest ways you can start providing value in your new role.**
 
-## Not knowing gives you a license to ask questions and improve
+# Not knowing gives you a license to ask questions and improve
 
 > "If you impress people in these first months, it should be because of the seriousness of your desire to learn, not because you are trying to rise to the top before you are ready." - Robert Greene, *Mastery*
 
@@ -21,7 +21,7 @@ Once you've been around for a while, people will expect much more of you. They a
 
 That's how you stop being a beginner.
 
-## Your team needs beginners
+# Your team needs beginners
 
 As the person with the least experience, you bring an essential perspective to the table: that of the beginner. Having someone around who can voice this perspective is important to your team for a few reasons:
 
@@ -35,7 +35,7 @@ Regularly considering the perspective of the beginner is vital to making softwar
 That's where you come in. You are real life beginner. There you are in every meeting, asking questions when you don't understand, and in the process holding a mirror up to your team and showing them what their work looks like to someone just getting ramped up. If you're confused, that might be a smell suggesting that that other beginners might be confused. **By asking for clarification when you're confused, you can accidentally shine a light on the things that need fixing, the things no one else sees, revealing ways for the team to improve.**
 
 
-### An important word of warning
+# An important word of warning
 
 All of that said, your goal in asking questions and voicing your own confusion is not to change your team. Your goal is simply to understand the way things are. Refrain from passing judgement. 
 
