@@ -70,6 +70,6 @@ Basically, passwords and logins are hard and you should not do them unless you r
 
 # Conclusion
 
-This is only a small sample of the things I have learned from [hacksplaining](https://www.hacksplaining.com). This site is full of valuable information about these and many other topics that I wasn't even able to touch on here, such as cookies,  It is a great series of lessons that goes by really quick, and a very good resource for anyone interested in learning a little more about security.
+This is only a small sample of the things I have learned from [hacksplaining](https://www.hacksplaining.com). It is a great series of lessons that goes by really quick, and a very good resource for anyone interested in learning a little more about security.
 
 *Did you like this post? Hate it? Have a topic you'd like me to write about in the future? Tell me what you'd like to see more or less of in the comments below!*
