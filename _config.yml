@@ -85,7 +85,7 @@ author:
   bio              : "I'm a back-end Software Engineer in the Bay Area. My interests lie in security, distributed systems, and AI."
   location         : "San Francisco Bay Area"
   email            : "andrewedstrom@gmail.com"
-  uri              : "https://andrewedstrom.com"
+  uri              :
   bitbucket        :
   codepen          :
   dribbble         :
@@ -250,3 +250,5 @@ defaults:
       related: true
 
 github: [metadata]
+
+minimal_mistakes_skin : "air"
