@@ -253,5 +253,4 @@ defaults:
 
 github: [metadata]
 
-theme: minimal-mistakes-jekyll
 minimal_mistakes_skin: "air"
