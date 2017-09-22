@@ -5,7 +5,7 @@ permalink: /find-and-replace/
 
 I get it. It's 2 a.m. and you need a name for a placeholder variable, but for some reason the only name you can think of is "`dicks`."
 
-So you type `public int dicks = 5;`, and keep going. Everything is golden...until the next day when you realize that you're a full-grown adult with a paycheck and a degree and you just wrote the word `dicks` in a dozen different files, like a child.
+So you type `public int dicks = 5;`, and keep going. Everything is golden...until the next day when you realize that you're a full-grown adult with a paycheck and a degree and who just wrote the word `dicks` in a dozen different files, like a child.
 
 This is never going to pass code review.
 
