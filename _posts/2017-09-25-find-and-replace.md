@@ -1,5 +1,5 @@
 ---
-title: "How to Do Recursive Find and Replace in the Command Line With `sed`"
+title: "How to Do Recursive Find and Replace in the Command Line With sed"
 permalink: /find-and-replace/
 ---
 
