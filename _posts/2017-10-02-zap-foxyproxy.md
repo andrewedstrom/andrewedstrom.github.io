@@ -39,13 +39,13 @@ Next, we need to tell our system to trust messages forwarded to us by the ZAP pr
 
 Without leaving the Options menu, click **Dynamic SSL Certificates** on the sidebar, then click `Save`. Put the `owasp_zap_root_ca.cer` certificate file somewhere where you will remember it. I chose to put it in `~/workspace/zap/` but anywhere is fine. Once this is done, click `OK` to close the Options menu.
 
-Now, use Spotlight to open the Keychain Access system utility. It should look something like this:
+Next, use Spotlight to open the Keychain Access system utility. It should look something like this:
 
 ![zap-keychain-access]({{ site.url }}{{ site.baseurl }}/assets/images/zap-keychain-access.jpg)
 
 In the **Keychains** sidebar, select **System.** In the **Category** sidebar, select **Certificates**
 
-Now we're ready to actually import the certificate, click **File > Import Items** and go select the `.cer` file you saved earlier. It should appear in your list of certificates with a little red x on it indicating it is still not trusted.
+Alright, now we're ready to actually import the certificate! Click **File > Import Items** and go find the `.cer` file you saved earlier. It should appear in your list of certificates with a little red x on it indicating it is still not trusted.
 
 ![zap-untrusted]({{ site.url }}{{ site.baseurl }}/assets/images/zap-untrusted.jpg)
 
@@ -67,7 +67,7 @@ Click the FoxyProxy icon in your menu bar and choose **Options.** This will take
 
 ![foxyproxy1]({{ site.url }}{{ site.baseurl }}/assets/images/foxyproxy1.jpg)
 
-Now we're going to tell FoxyProxy how to talk to the ZAP Proxy server we set up previously. Select **Add New Proxy.** Now, under **Proxy Details**, select **Manual Proxy Configuration** and enter `127.0.0.1` as the **Host or IP Address** and `8080` as the **Port.**
+Now we're going to tell FoxyProxy how to talk to the ZAP Proxy server we set up previously. Select **Add New Proxy.** Under **Proxy Details**, select **Manual Proxy Configuration** and enter `127.0.0.1` as the **Host or IP Address** and `8080` as the **Port.**
 
 ![foxyproxy2]({{ site.url }}{{ site.baseurl }}/assets/images/foxyproxy2.jpg)
 
@@ -75,21 +75,21 @@ Next, we want to tell the extension what sites we want to send through the proxy
 
 ![foxyproxy3]({{ site.url }}{{ site.baseurl }}/assets/images/foxyproxy3.jpg).
 
-Hit **Save.** Feel free to add more patterns if you have multiple sites you want to analyze, but it may be wise to just do this for one site at first and then test out whether its working. 
+Hit **Save.** Feel free to add more patterns if you have multiple sites you want to analyze, but it may be wise to just do one site at first and then test out whether it's working. 
 
-Finally, if you want to you can click the **General** tab up top and give this proxy a name. When you're done, hit **Save.**
+If you want to you can click the **General** tab up top and give this proxy a name. Either way, when you're done, hit **Save.**
 
 ![foxyproxy4]({{ site.url }}{{ site.baseurl }}/assets/images/foxyproxy4.jpg).
 
-Now, activate your new proxy rules by clicking the FoxyProxy icon in the Chrome menu and choosing **Use proxies based on their pre-defined patterns and priorities.**
+With your proxy rule now created, you can activate your new rule by clicking the FoxyProxy icon in the Chrome menu and choosing **Use proxies based on their pre-defined patterns and priorities.**
 
 ![foxyproxy5]({{ site.url }}{{ site.baseurl }}/assets/images/foxyproxy5.jpg).
 
-If everything went according to plan, your traffic should now be routed through your proxy on the way to your browser. You can test this out by navigating to the site you told FoxyProxy to send through the browser. Once the page loads, go back to the ZAP window. If everything worked, all of the requests and responses made in order to load the page should show up in the **History** section.
+If everything went according to plan, your traffic to the websites you specified will now be routed through your proxy on the way to your browser. You can test this out by navigating to the site you told FoxyProxy to send through the proxy. Once the page loads, go back to the ZAP window. All of the requests and responses made in order to load the page should show up in the **History** section.
 
 ![zap-done]({{ site.url }}{{ site.baseurl }}/assets/images/zap-done.jpg).
 
-Now you can use ZAP to your heart's content to analyze and pen test your site! Once you are done, simply close the ZAP app and click **Disable FoxyProxy** in the FoxyProxy extension settings
+You did it! Now you can use ZAP to your heart's content to analyze and pen test your site! If you would like to stop proxying, simply close the ZAP app and click **Disable FoxyProxy** in the FoxyProxy extension settings
 
 ![foxyproxy6]({{ site.url }}{{ site.baseurl }}/assets/images/foxyproxy6.jpg).
 
