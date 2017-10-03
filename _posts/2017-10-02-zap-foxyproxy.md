@@ -3,7 +3,7 @@ title: "How to Set Up OWASP ZAP and FoxyProxy to Start Capturing and Modifying W
 permalink: /zap-foxyproxy/
 ---
 
-As I've discussed in [a previous post](2017-09-11-hacksplaining.md), I believe that developers have a moral obligation to understand security in order to protect the people who use our products, and as such I'm trying to learn as much about the topic as I can.
+As I've discussed in [a previous post]({{ site.baseurl }}/hacksplaining), I believe that developers have a moral obligation to understand security in order to protect the people who use our products, and as such I'm trying to learn as much about the topic as I can.
 
 In the last week, I've learned about an important item in the hacker's toolbox: the http proxy. An http proxy is an application that sits between your browser and the web server, something like this:
 
