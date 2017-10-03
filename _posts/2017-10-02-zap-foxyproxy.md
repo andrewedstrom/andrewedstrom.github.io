@@ -3,15 +3,15 @@ title: "How to Set Up OWASP ZAP and FoxyProxy to Start Capturing and Modifying W
 permalink: /zap-foxyproxy/
 ---
 
-As I've discussed in [a previous post]({{ site.baseurl }}/hacksplaining), I believe that developers have a moral obligation to understand security in order to protect the people who use our products, and as such I'm trying to learn as much about the topic as I can.
+As I've discussed in a [previous post]({{ site.baseurl }}/hacksplaining), I'm trying to learn more about security.
 
-In the last week, I've learned about an important item in the hacker's toolbox: the http proxy. An http proxy is an application that sits between your browser and the web server, something like this:
+Last week, I learned about an important item in the hacker's toolbox: the http proxy. An http proxy is an application that sits between your browser and the web server, something like this:
 
 ```
 browser <---> http proxy <---> server
 ```
 
-Why is this useful? Well, setting up an http proxy allows you to capture all of the packets coming from the server so that you can dissect them later, looking for ways in which the server might be vulnerable. It also lets you modify outgoing packets in order to execute attacks.
+Why is this useful? Well, setting up an http proxy allows you to capture all of the responses coming from the server so that you can dissect them later, looking for ways in which the server might be vulnerable. It also lets you modify outgoing requests in order to execute attacks, or just to send the same request over and over in a repeat attack.
 
 If you've never set up an http proxy before, it can be a little confusing. In this post I will walk you through the process. We will use [OWASP Zed Attack Proxy (ZAP)](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) as our http proxy and connect it to our browser with the [FoxyProxy](https://getfoxyproxy.org/) extension. My guide will center around Mac OS X and Chrome because that's what I happen to use myself. 
 
@@ -75,7 +75,7 @@ Next, we want to tell the extension what sites we want to send through the proxy
 
 ![foxyproxy3]({{ site.url }}{{ site.baseurl }}/assets/images/foxyproxy3.jpg).
 
-Feel free to add more patterns if you have multiple sites you want to analyze. It may be wise to just do this for one site at first and then test out whether its working.
+Hit **Save.** Feel free to add more patterns if you have multiple sites you want to analyze, but it may be wise to just do this for one site at first and then test out whether its working. 
 
 Finally, if you want to you can click the **General** tab up top and give this proxy a name. When you're done, hit **Save.**
 
