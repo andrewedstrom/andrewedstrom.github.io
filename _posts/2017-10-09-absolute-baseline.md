@@ -1,5 +1,5 @@
 ---
-title: "The 80/20 of Security For The Person Who Doesn't Want To Spend Too Much Time Thinking About Security"
+title: "The 80/20 of Security For People Who Don't Want To Spend Much Time Thinking About Security"
 permalink: /80-20/
 ---
 
