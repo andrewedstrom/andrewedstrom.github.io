@@ -1,7 +1,12 @@
 # main links
 main:
-  - title: "About"
+  - title: "Home"
     url: /about
+  - title: "Blog"
+    url: /blog
+  - title: "Books"
+    url: /books
+
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
