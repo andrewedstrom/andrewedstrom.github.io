@@ -7,7 +7,11 @@
 <div itemscope itemtype="http://schema.org/Person">
 
   {% if author.avatar %}
-    <div class="author__avatar">
+    {% if author.hero %}
+      <div class="hero__avatar">
+    {% else %}
+      <div class="author__avatar">
+    {% endif %}
       {% if author.avatar contains "://" %}
         <img src="{{ author.avatar }}" alt="{{ author.name }}" itemprop="image">
       {% else %}
@@ -16,7 +20,11 @@
     </div>
   {% endif %}
 
+  {% if author.hero %}
+  <div class="author__hero__content">
+  {% else %}
   <div class="author__content">
+  {% endif %}
     <h3 class="author__name" itemprop="name">{{ author.name }}</h3>
     {% if author.bio %}
       <p class="author__bio" itemprop="description">
@@ -24,8 +32,12 @@
       </p>
     {% endif %}
   </div>
-
+  
+  {% if author.hero %}
+  <div class="hero__urls-wrapper">
+  {% else %}
   <div class="author__urls-wrapper">
+  {% endif %}
     <button class="btn btn--inverse">{{ site.data.ui-text[site.locale].follow_label | remove: ":" | default: "Follow" }}</button>
     <ul class="author__urls social-icons">
       {% if author.location %}

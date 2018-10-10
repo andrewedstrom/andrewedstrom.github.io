@@ -87,6 +87,7 @@ author:
   bio              : "I'm a back-end Software Engineer. I blog about security."
   location         : "San Francisco Bay Area"
   email            : "andrewedstrom@gmail.com"
+  hero             : true
   uri              :
   bitbucket        :
   codepen          :
