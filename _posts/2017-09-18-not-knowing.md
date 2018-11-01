@@ -13,7 +13,7 @@ In moments like these, there is a strong temptation to hide your lack of underst
 
 > "If you impress people in these first months, it should be because of the seriousness of your desire to learn, not because you are trying to rise to the top before you are ready." - Robert Greene, *Mastery*
 
-As the resident new guy, you are in a very rare and privileged position. No one expects you to know things, and everyone wants you to learn so you can start pulling your own weight. This means that you can ask all kinds of seemingly dumb questions to people who do the same thing as you professionally—and they have to answer you! So if you don't understand, just suck it up and ask.
+As the resident new person, you are in a very rare and privileged position. No one expects you to know things, and everyone wants you to learn so you can start pulling your own weight. This means that you can ask all kinds of seemingly dumb questions to people who do the same thing as you professionally—and they have to answer you! So if you don't understand, just suck it up and ask.
 
 You are sitting on a gold mine of information, and all you have to do in order to gain access to it is swallow your pride and admit that you don't understand things. What a small price to pay! 
 
@@ -32,14 +32,13 @@ As you develop software, your must regularly consider both of these perspectives
 
 Regularly considering the perspective of the beginner is vital to making software that lasts. It is vital to avoiding tech debt. But it is very difficult to do for someone who has been immersed in a project for so long that they know it inside and out, a.k.a. the people on your team.
 
-That's where you come in. You are real life beginner. There you are in every meeting, asking questions when you don't understand, and in the process holding a mirror up to your team and showing them what their work looks like to someone just getting ramped up. If you're confused, that might be a smell suggesting that that other beginners might be confused. **By asking for clarification, you can accidentally shine a light on the things that need fixing, the things no one else sees, revealing ways for the team to improve.**
-
+That's where you come in. You are real life beginner. There you are in every meeting, asking questions when you don't understand, and in the process holding a mirror up to your team and showing them what their work looks like to someone just getting ramped up. If you're confused, that might be a smell suggesting that that other beginners might be confused. **By asking for clarification, you can accidentally shine a light on the things that need fixing—the things no one else sees—revealing ways for the team to improve.**
 
 # An important word of warning
 
 All of that said, your goal in asking questions and voicing your own confusion is not to change your team. Your goal is simply to understand the way things are. Refrain from passing judgement. 
 
-One of the fastest ways to destroy your rapport with a new team is to be the guy who shows up on his first day and starts telling everyone that they are doing things wrong. Your job in the beginning is to learn. Until you deeply understand the status quo, you are not qualified to have an opinion about it. 
+One of the fastest ways to destroy your rapport with a new team is to be the one who shows up on their first day and starts telling everyone that they are doing things wrong. Your job in the beginning is to learn. Until you deeply understand the status quo, you are not qualified to have an opinion about it. 
 
 Let the others decide if your lack of understanding says something about the health of the team. Don't even bring it up.
 
