@@ -1,0 +1,604 @@
+1	<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Terra</title>
+    <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<style>
+    *{
+        user-select:none;
+    }
+    body {
+        margin: 0;
+        overflow: hidden;
+        background:#000;
+        display: block;
+        width: 500px;
+        height: 500px;
+    }
+    #pivot {
+        -webkit-transform-style:preserve-3d;
+        perspective:600px;
+        position:absolute;
+        left:-200%;
+        right:-200%;
+        top:-200%;
+        bottom:-200%;
+    }
+    #grid {
+        background:url('assets/images/grid.png');
+        width:0%;
+        height:0%;
+        position:absolute;
+        -webkit-transform-origin:center center;
+        perspective-origin:120px;
+        opacity: 0;
+        display:none;
+    }
+    #webgl{
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        position:absolute;
+        display: flex;
+        opacity:1;}
+
+    .spinner {
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        opacity: 1;
+        pointer-events:none;
+        transition:all 0.25s;
+    }
+    .spinner:after {
+        opacity:1;
+        width:50px;
+        height:50px;
+        background-size: 30px;
+    }
+    .elev:hover #elevation {
+        display:block;
+    }
+    #sidebar{
+        position: absolute;
+        width: 300px;
+        background: white;
+        border-radius:6px;
+        box-shadow:0px 0px 6px 0px rgba(0,0,0,0.5);
+        right: 0;
+        bottom:0;
+        margin:10px;
+        z-index: 99;
+        overflow:hidden;
+        user-select:none;
+    }
+
+    .elev canvas {
+        cursor: crosshair;
+    }
+    canvas {
+        cursor:-webkit-grab;
+    }
+
+    canvas:active{
+        cursor:-webkit-grabbing;
+    }
+
+    #elevation {
+        position:absolute;
+        background:#fff;
+        color:#333;
+        padding:4px;
+        z-index:100;
+        pointer-events:none;
+        display:none;
+        border-radius:2px;
+    }
+
+    #elevation:after {
+        content:' m';
+    }
+
+    #compass {
+        perspective:100px;
+        position: absolute;
+        background:rgba(0,0,0,0.7);
+        z-index: 99;
+        bottom: 0;
+        left: 0;
+        padding: 10px 16px;
+        opacity: 0.9;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 10px;
+        cursor:hand;
+    }
+
+    #compass:hover {
+        background:steelblue;
+    }
+
+    #compass:hover:after{
+        content:"RESET";
+        color:white;
+        text-align:center;
+        font-size:0.75em;
+        line-height:42px;
+    }
+
+    #compass:hover img {
+        display:none;
+    }
+
+    #viewshed {
+        display:block;
+        height:180px;
+    }
+    .leaflet-control {
+        display:none;
+    }
+    .leaflet-div-icon{
+        background:none;
+        transition:all 0.2s;
+        pointer-events:none;
+        opacity:0.75;
+    }
+    .dottedline {
+      width:1500px;
+      height:0px;
+      border-top:1px dotted #999;
+      margin-top: 750px;
+      position:absolute;
+    }
+    .dottedline+.dottedline {
+      height:1500px;
+      width:0px;
+      margin-top:0px;
+      border-left:1px dotted #aaa;
+      margin-left: 750px;
+    }
+    .leaflet-container {
+        cursor:crosshair;
+    }
+
+    #caption {
+        color:orange;
+    }
+    .count-icon{
+        background:rgba(0,0,0,0);
+    }
+
+    .count-icon div{
+        width:3px;
+        height:3px;
+        border-radius:50%;
+        background:aqua;
+        margin:6px;
+        transition:all 0.25s;
+    }
+    .count-icon:hover div{
+        border:0px solid #424b50;
+        width:10px;
+        height:10px;
+        margin:2px;
+        background:orange;
+    }
+    .dragger {
+        float:right;
+        font-weight:bold;
+    }
+
+    .short.rounded-toggle{
+        margin:8px;
+    }
+
+    .filterreset{
+        transform:rotate(180deg);
+        cursor:pointer;
+        color:#999;
+    }
+
+    .filterreset:hover{
+        background:#999;
+        color:white;
+    }
+
+    @media screen and (max-width: 680px) {
+    #sidebar {
+        display:none;
+    }
+}
+</style>
+<style type="text/css"></style></head>
+<body>
+    <div id='pivot'>
+        <div id='grid'></div>
+    </div>
+<div id="sidebar" class='z100'>
+    <div id='viewshed' class='clearfix'>
+        <span class='pin-topleft z100 code dark fill-black pad0' id='caption'></span>
+
+        <span class='pin-bottomright z100 code dark margin0 fill-black pad0' id='lnglat'></span>
+    </div>
+    <div class='keyline-bottom clearfix'>
+        <div class='small uppercase fl pad1 quiet'>Revolve</div>
+        <div class='rounded-toggle short inline fr'>
+            <input id='revolveoff' type='radio' name='rtoggle' value='revolveoff' onclick='controls.autoRotate=false' checked='checked'>
+            <label for='revolveoff'>OFF</label>
+            <input id='revolveon' type='radio' name='rtoggle' value='revolveon' onclick='controls.autoRotate=true'>
+            <label for='revolveon'>ON</label>
+        </div>
+    </div>
+    <div class='keyline-bottom clearfix '>
+        <div class='small uppercase fl pad1 quiet'>Elevation inspector</div>
+        <div class='rounded-toggle short inline fr'>
+            <input id='labeloff' type='radio' name='elev' value='labeloff' onclick='toggleElevation()' checked='checked'>
+            <label for='labeloff'>OFF</label>
+            <input id='labelon' type='radio' name='elev' value='labelon' onclick='toggleElevation()'>
+            <label for='labelon'>ON</label>
+        </div>
+    </div>
+    <div class='pad1  fl col5 clearfix' id='adjustcontrast'>
+        <span class='small uppercase quiet'>Contrast</span>
+
+        <input id="contrast" class='dragger hidden' value="100" />
+    </div>
+    <div class='pad1 fl keyline-left clearfix' style='width:134px' id='adjustbrightness'>
+        <span class='small uppercase quiet'>Brightness</span>
+        <input id="brightness" class='dragger hidden' value="100"/>
+    </div>
+    <div class='pad1 col5 clearfix hidden' id='adjustsaturation'>
+        <span class='small uppercase'>RESET</span>
+        <input id="saturation" value="100" />
+    </div>
+    <div class='pad1 keyline-right clearfix inline fr filterreset' onclick='resetFilter()'>
+        <span class='icon rotate'></span>
+    </div>
+</div>
+
+<div id="webgl">
+    <div id='elevation'></div>
+    <div class='spinner pad1 z100' id='progress'></div>
+</div>
+
+<div id='compass' onclick='updateCompass(true)'>
+    <img src='assets/images/compass.svg' width='28'>
+</div>
+
+<script src="assets/js/mapbox_libs/sm.js" note="THIS WAS MODIFIED TO PROJECT TO DECIMAL PIXELS"></script>
+
+<script src="assets/js/mapbox_libs/utilities.js"></script>
+<script src="assets/js/mapbox_libs/sidebar.js"></script> -->
+<script src="assets/js/mapbox_libs/three.min.js"></script>
+<script src="assets/js/mapbox_libs/app.js"></script>
+<script src="assets/js/mapbox_libs/OrbitControls.js"></script>
+
+<script>
+    debugMode = false
+    var firstTime = true;
+    var meshes = 0;
+    var parserRequests = 0;
+    var updaterRequests = 0;
+    var finished = 0;
+    //compass functionality
+    var pivot = document.querySelector('#grid')
+    var compass = document.querySelector('#compass img')
+    var screenPosition;
+    function updateCompass(reset){
+        var styling;
+
+        if (reset) {
+            controls.straighten();
+            controls.autoRotate=false;
+            styling = '';
+        }
+        else {
+            var angle = controls.getAzimuthalAngle()*180/Math.PI;
+            var pitch = controls.getPolarAngle()*180/Math.PI;
+            styling = 'rotateX('+pitch+'deg) rotateZ('+angle+'deg)'
+        }
+        compass.style['-webkit-transform'] = styling
+        pivot.style['-webkit-transform'] = styling
+        pivot.style['display'] = 'block'
+    }
+
+    //set up scene
+    var width  = window.innerWidth - 500,
+        height = window.innerHeight - 500;
+    var scene = new THREE.Scene();
+
+    //set up renderer
+    var renderer = new THREE.WebGLRenderer({alpha:true});
+    renderer.setSize(width, height)
+    document.getElementById('webgl').appendChild(renderer.domElement);
+
+    //set up camera
+    var camera = new THREE.PerspectiveCamera(70, width / height, 1/99, 100000000000000);
+    camera.position.y = 12000;
+    var controls = new THREE.OrbitControls( camera, renderer.domElement );
+    render();
+
+    function render() {
+        controls.update();
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+    }
+
+
+    var raycaster = new THREE.Raycaster();
+
+    var elevReading = document.getElementById('elevation');
+    document.getElementById('webgl').addEventListener('mousemove', function(e){
+
+        if (!inspectElevation) return;
+        var xy = [e.clientX, e.clientY];
+
+        var screenPosition = {x: (xy[0]/width-0.5)*2, y:(0.5-xy[1]/height)*2};
+        raycaster.setFromCamera(screenPosition, camera);
+        var intersect = raycaster.intersectObjects(scene.children)[0];
+        var pt = intersect.point;
+        var latitude = (mercator.ll([0, pt.z+basePlaneDimension/2],0))[1]
+        var metersPerPixel = mPerPixel(latitude, basePlaneDimension/(Math.pow(2,Math.floor(getZoom()))), Math.floor(getZoom()))
+
+
+        elevReading.innerHTML = (Math.round(pt.y * metersPerPixel))
+        elevReading.style['-webkit-transform'] = 'translateX('+(xy[0]+10)+'px) translateY('+(xy[1]+10)+'px)'
+
+    })
+
+    function getZoom(){
+        var pt = controls.target.distanceTo(controls.object.position);
+        return Math.min(
+            Math.max(
+                getBaseLog(0.5, pt/12000)+4,
+                0
+            )
+        ,22);
+    }
+
+    var tilesToGet = 0;
+    var inspectElevation = false;
+
+    function assembleUrl(img, coords){
+
+        var tileset = img ? 'mapbox.streets-satellite' : 'mapbox.terrain-rgb';//
+        var res = img ? '@2x.png' :'@2x.pngraw';
+
+        //domain sharding
+        var serverIndex = 2*(coords[1]%2)+coords[2]%2
+        var server = ['a','b','c','d'][serverIndex]
+        //return 'sample.png'
+        return 'https://'+server+'.tiles.mapbox.com/v4/'+tileset+'/'+slashify(coords)+res+'?access_token=pk.eyJ1IjoiYmxrLXNoZXJsb2NrIiwiYSI6ImNqbmFnZDZ6ejdvaDMza255dHRudzFlZWgifQ.OWDzc19DrC3xJKEaOglEIA'
+    }
+
+
+    var basePlane = new THREE.PlaneBufferGeometry(basePlaneDimension*100, basePlaneDimension*100, 1, 1);
+
+    var mat = new THREE.MeshBasicMaterial( {
+        wireframe: true,
+        opacity:0
+        //transparent: true
+    } );
+
+    var plane = new THREE.Mesh( basePlane, mat );
+    plane.rotation.x = -0.5*Math.PI;
+    plane.opacity=0
+    scene.add( plane );
+
+    // calculates which tiles are in view to download
+    var updater = new Worker('assets/js/mapbox_libs/workers/updatetile.js');
+    updater.addEventListener('message', function(e) {
+
+        var cb = e.data;
+        var queue = cb.getTiles[0].length;
+
+        if (queue>0) {
+            getTiles(cb.getTiles);
+            updateTileVisibility();
+        }
+    }, false)
+
+    //converts RGB values to elevation
+    var parserPool = [];
+
+    for (var p=0; p<4; p++){
+        var parser = new Worker('assets/js/mapbox_libs/workers/parseelevationworker.js');
+
+        // whenever parser returns a mesh, make mesh
+        parser.addEventListener('message', function(e) {
+            var time = Date.now();
+            var cb = e.data;
+            parserRequests++
+            if(cb.makeMesh) makeMesh(cb.makeMesh)
+            else console.log(cb)
+        }, false)
+        parserPool.push(parser)
+    }
+
+
+    //initial tile load
+    window.setTimeout(function(){
+        updateCompass()
+    }, 500);
+
+    function updateTiles(){
+
+        zoom = Math.floor(getZoom());
+
+        var ul = {x:-1,y:-1,z:-1};
+        var ur = {x:1,y:-1,z:-1};
+        var lr = {x:1,y:1,z:1};
+        var ll = {x:-1,y:1,z:1};
+
+        var corners = [ul, ur, lr, ll, ul].map(function(corner){
+            raycaster.setFromCamera(corner, camera);
+            return raycaster.intersectObject(plane)[0].point;
+        })
+
+        if (corners[0] === screenPosition) return;
+        else screenPosition = corners[0];
+
+        updater.postMessage([zoom,corners])
+
+        setHash()
+
+    }
+
+    // given a list of elevation and imagery tiles, download
+    function getTiles([tiles,elevation]){
+
+        document.querySelector('#progress').style.opacity = 1;
+
+        tiles =
+        tiles.map(function(tile){return slashify(tile)})
+
+
+        tilesToGet+= tiles.length;
+        updaterRequests+=tiles.length
+
+        elevation.forEach(function(coords){
+
+            //download the elevation image
+            getPixels(assembleUrl(null, coords),
+
+                function(err, pixels) {
+                    // usually a water tile-- fill with 0 elevation
+                    if (err) pixels = null
+                    var parserIndex = 2*(coords[1]%2)+coords[2]%2
+                    parserPool[parserIndex]
+                        .postMessage([pixels, coords, tiles,parserIndex])
+                }
+            )
+        })
+
+    }
+
+
+    function makeMesh([data, [z,x,y]]){
+        meshes++
+        // if (Math.floor(getZoom()) !== z) {
+        //     tilesToGet--
+        //     //worker.postMessage({restore })
+
+        //     console.log('abort makemesh')
+        //     return
+        // }
+
+        var tileSize = basePlaneDimension/(Math.pow(2,z));
+        var vertices = 128;
+        var segments = vertices-1;
+
+        // get image to drape
+        var texture = new THREE.TextureLoader()
+        .load(
+
+            //url
+            assembleUrl(true, [z,x,y]),
+
+            //callback function
+            function(err, resp){
+                tilesToGet--
+                    finished++
+
+                scene.remove(placeholder)
+                plane.visible=true
+
+                if (tilesToGet===0) {
+                    document.querySelector('#progress').style.opacity = 0;
+                    console.log('STABLE')
+                    updateTileVisibility()
+                }
+
+            }
+        );
+
+        // set material
+        var material = new THREE.MeshBasicMaterial({map: texture});
+
+        data = resolveSeams(data, neighborTiles,[z,x,y])
+        var geometry = new THREE.PlaneBufferGeometry(tileSize, tileSize, segments, segments);
+
+        geometry.attributes.position.array = new Float32Array(data);
+
+        var placeholder = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({wireframe:true,color:0x999999}));
+        scene.add(placeholder);
+
+        var plane = new THREE.Mesh(geometry, material);
+
+        plane.coords = slashify([z,x,y])
+        plane.zoom = z;
+        scene.add(plane)
+        plane.visible=false
+    };
+
+
+    var zoom = getZoom();
+
+function toggleElevation(){
+    inspectElevation = !inspectElevation
+    var className = inspectElevation ? 'elev' : ''
+    document.querySelector('#webgl').className = className;
+}
+function setCenter(lnglat){
+    var pxCoords = project(lnglat)
+    camera.position.x = pxCoords.x;
+    camera.position.z = pxCoords.z;
+    controls.moveTo(pxCoords, camera.position.y);
+
+    markerx.setLatLng(lnglat.reverse());
+
+    window.setTimeout(function(){updateTiles()},100);
+    updateCompass(true);
+}
+
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize() {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    updateTiles()
+}
+
+function updateTileVisibility(){
+    var zoom = Math.floor(getZoom())
+    //update tile visibility based on zoom
+    for (var s=0; s<scene.children.length; s++){
+        var child = scene.children[s];
+        if (child.zoom === zoom || child.zoom === undefined) child.visible = true
+        else child.visible = false;
+    }
+}
+// SE Angola
+//Jotunheimen
+//Morocco
+//Ngorongoro craters, Tanzania
+//Volcano, New Zealand
+//Lac Bleu, pyrenees
+
+// #1057.9583/-5401.4846/1062.8568/-5402.1971/8.2853
+// #-8068.3074/594.5837/-8062.9915/590.7288/9.0380 teton wilderness area
+
+// #-21980.7104/-9575.5896/-21973.4357/-9578.5276/10.7986 washington
+// #-22069.6611/-9430.6221/-22061.5953/-9437.7232/18.4163 mt st helens
+// #1419.2888/-9562.7037/1417.2514/-9553.8168/13.5942 interlaken
+// #31439.5768/7724.8767/31450.0026/7726.0766/14.6333 Mt. Taranaki
+// #2387.2224/2758.9961/2377.5172/2779.7331/31.5132 lubango escarpment
+// #-21654.3374/-6550.8307/-21657.2202/-6556.2204/8.4127 santa cruz island
+// #-20310.1121/-7024.0632/-20303.6103/-7019.2996/11.0939 horseshoe bend
+// #-13234.9792/10718.8008/-13222.4889/10722.5082/17.9328 glacier grey
+// #4870.5649/-7210.0027/4868.2187/-7208.9957/3.5140 greek archipelago
+
+// #-20136.8970/-7188.3681/-20135.9974/-7187.4271/4.7215 glen canyon dam
+</script>
+
+
+
+</body>
+</html>

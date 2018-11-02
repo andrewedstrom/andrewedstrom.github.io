@@ -81,10 +81,16 @@ layout: default
       </div>
     </div>
   {% endif %}
+
+  <!-- Load Mapbox last -->
+  <div id=mapbox >
+    {% include mapbox_terrain.html %}
+  </div>
+
 </div>
 
 <!-- {% if page.include_map %} -->
-<div id=mapbox style="display:flex; width: 1280px; height:500px">
-  {% include mapbox.html %}
-</div>
+<!-- <div id=mapbox >
+  {% include mapbox_terrain.html %}
+</div> -->
 <!-- {% endif %} -->
