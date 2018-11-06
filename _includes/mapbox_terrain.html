@@ -1,7 +1,7 @@
-1	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Terra</title>
-    <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+<link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -308,8 +308,9 @@
     }
 
     //set up scene
-    var width  = window.innerWidth - 500,
-        height = window.innerHeight - 500;
+    //defines canvas width and height
+    var width  = 500,
+        height = 500;
     var scene = new THREE.Scene();
 
     //set up renderer
@@ -423,7 +424,15 @@
 
     //initial tile load
     window.setTimeout(function(){
-        updateCompass()
+        //setCenter(20.7319, 69.4934);
+        var e = {
+          "LatLng":{
+            "lat": 20.7319,
+            "lng": 69.4934
+          }
+        }
+      //setCenter(e);
+        updateCompass();
     }, 500);
 
     function updateTiles(){
@@ -544,7 +553,10 @@ function toggleElevation(){
     var className = inspectElevation ? 'elev' : ''
     document.querySelector('#webgl').className = className;
 }
+
+//How each position is defined w/ the map
 function setCenter(lnglat){
+    console.log(lnglat);
     var pxCoords = project(lnglat)
     camera.position.x = pxCoords.x;
     camera.position.z = pxCoords.z;

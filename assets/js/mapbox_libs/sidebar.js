@@ -7,6 +7,7 @@ var viewshed = L.mapbox.map('viewshed', 'peterqliu.aaa01f1e', {
     zoomControl:false
 })
 .on('click', function(e) {
+    console.log(e);
     setCenter([e.latlng.lng, e.latlng.lat]);
 })
 
