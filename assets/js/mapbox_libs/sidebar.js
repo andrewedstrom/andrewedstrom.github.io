@@ -277,7 +277,15 @@ locations.on('mouseover', function(e) {
 })
 .on('click', function(e){
     setView(controls, e.layer.feature.properties.Position)
+    console.log(e);
+    console.log(e.layer.feature.properties.Position);
     //setCenter(e.layer.feature.geometry.coordinates)
     window.setTimeout(function(){updateCompass()},100);
 });
+
+
 viewshed.setView([28,0], 0)
+
+//initial view
+setView(controls, "13.2701/69.4934/20.7319/-158.7079/30.2736");
+window.setTimeout(function(){updateCompass()},100);
