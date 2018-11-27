@@ -236,11 +236,14 @@
         &:before {
           content: "";
           position: absolute;
-          left: 0;
+          left: 45%;
           bottom: 0;
-          height: 4px;
+          /*height: 4px;*/
+          height: 10px;
           background: $primary-color;
-          width: 100%;
+          /*width: 100%;*/
+          width: 10px;
+          border-radius: 12px;
           -webkit-transition: $global-transition;
           transition: $global-transition;
           -webkit-transform: scaleX(0) translate3d(0, 0 , 0);

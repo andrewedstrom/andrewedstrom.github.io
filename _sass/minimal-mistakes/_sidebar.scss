@@ -30,7 +30,7 @@
     }
 
     &.sticky {
-      overflow-y: auto;
+      /*overflow-y: auto;*/
       /* calculate height of nav list */
       height: calc(100vh - 90px - 2em); // viewport height - approx. masthead height - main content top margin
     }
@@ -58,11 +58,13 @@
 
 .hero_sidebar {
   display: block;
+  text-align: center;
   margin: auto;
   @include clearfix();
   margin-bottom: 1em;
-  -webkit-transform: translate3d(0, 0 , 0);
-          transform: translate3d(0, 0 , 0);
+  /*=== Not using animations ======*/
+  /*-webkit-transform: translate3d(0, 0 , 0);
+          transform: translate3d(0, 0 , 0);*/
 
   @include breakpoint(max-width $large) {
     /* fix z-index order of follow links */
@@ -73,16 +75,17 @@
   @include breakpoint($large) {
     /*float: left;*/
     width: calc(#{$right-sidebar-width-narrow} - 1em);
-    opacity: 0.75;
-    -webkit-transition: opacity 0.2s ease-in-out;
-            transition: opacity 0.2s ease-in-out;
+    /*=== Not using animations ======*/
+    /*opacity: 0.75;*/
+    /*-webkit-transition: opacity 0.2s ease-in-out;
+            transition: opacity 0.2s ease-in-out;*/
 
     &:hover {
       opacity: 1;
     }
 
     &.sticky {
-      overflow-y: auto;
+      /*overflow-y: auto;*/
       /* calculate height of nav list */
       height: calc(100vh - 90px - 2em); // viewport height - approx. masthead height - main content top margin
     }
@@ -190,7 +193,7 @@
 
     @include breakpoint($large) {
       padding: 5px;
-      border: 1px solid $border-color;
+      /*border: 1px solid $border-color;*/
     }
   }
 }
@@ -282,7 +285,7 @@
   display: table-cell;
   vertical-align: middle;
   font-family: $sans-serif;
-  z-index: 10;
+  /*z-index: 10;*/
   position: relative;
   cursor: pointer;
 
