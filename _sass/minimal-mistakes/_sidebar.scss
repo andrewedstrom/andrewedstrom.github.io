@@ -245,6 +245,9 @@
 .author__bio {
   margin: 0;
 
+  p{
+    color: $text-color;
+  }
   @include breakpoint($large) {
     margin-top: 10px;
     margin-bottom: 20px;

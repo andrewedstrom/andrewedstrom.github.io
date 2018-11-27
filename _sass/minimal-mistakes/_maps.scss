@@ -1,0 +1,28 @@
+/* ==========================================================================
+  MAPS
+   ========================================================================== */
+
+/*
+   Default
+   ========================================================================== */
+
+.maps {
+  display: flex;
+  flex-direction: column;
+  background-color: #eaeaea;
+}
+
+.maps p{
+  font-family: Arial Black, sans-serif;
+  color: #161719;
+}
+
+.icon-container{
+  display: flex;
+  justify-content: center;
+}
+
+.maps .icon{
+  width: 100px;
+  height: auto;
+}
