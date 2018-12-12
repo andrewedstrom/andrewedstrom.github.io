@@ -193,6 +193,9 @@
 
     @include breakpoint($large) {
       padding: 5px;
+      display: block;
+      margin: auto;
+      border-radius: 50%;
       /*border: 1px solid $border-color;*/
     }
   }

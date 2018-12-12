@@ -1,6 +1,5 @@
 ---
-permalink: /home/
-title: "Home"
+permalink: /books/
 layout: single
 author_profile: true
 author_hero: true

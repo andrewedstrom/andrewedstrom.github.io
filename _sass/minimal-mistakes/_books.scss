@@ -1,0 +1,25 @@
+/* ==========================================================================
+    Books
+   ========================================================================== */
+
+/*
+   Default
+   ========================================================================== */
+
+.books {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  background-color: #eaeaea;
+}
+
+.bookContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.title_description{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
