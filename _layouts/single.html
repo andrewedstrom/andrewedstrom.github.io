@@ -14,15 +14,17 @@ layout: default
   {% endunless %}
 {% endif %}
 
-<div id="main" role="main" class="main">
-  {% if page.url == "/" or page.url == "/home/"%}
+{% if page.url == "/" or page.url == "/home/"%}
+  <div id="main" role="main" class="main">
     {% include sidebar.html %}
-  {% endif %}
+  </div>
+{% endif %}
 
-  {% if page.url == "/books/"%}
+{% if page.url == "/books/"%}
+  <div id="main" role="main">
     {% include books.html %}
-  {% endif %}
-</div>
+  </div>
+{% endif %}
 
 {% if page.url == "/" or page.url == "/home/" %}
 <div id="maps">
