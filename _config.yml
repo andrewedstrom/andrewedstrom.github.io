@@ -49,6 +49,12 @@ staticman:
 atom_feed:
   path                   : # blank (default) uses feed.xml
 
+# Collections
+collections:
+  books:
+    output: true
+    permalink: /books/:path
+
 # SEO Related
 google_site_verification :
 bing_site_verification   :
