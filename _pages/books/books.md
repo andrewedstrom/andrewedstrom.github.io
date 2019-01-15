@@ -1,6 +1,6 @@
 ---
 permalink: /books/
-layout: single
+layout: bookGallery
 author_profile: true
 author_hero: true
 include_map: true

@@ -6,4 +6,3 @@ author_profile: true
 author_hero: true
 include_map: true
 ---
-Yo what's good

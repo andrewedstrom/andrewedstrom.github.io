@@ -1,10 +1,10 @@
 <script type="text/javascript">
   function hideBooks(){
     var bookSection = document.getElementById('bookSection');
-    bookSection.style.display = "none";
+    //bookSection.style.display = "none";
 
     var gallerySection = document.getElementById('bookGallery');
-    gallerySection.style.display = "flex";
+    //gallerySection.style.display = "flex";
     //Add in Animation
     console.log("Hide Book Section");
     //console.log({{page.books}});
@@ -15,37 +15,21 @@
   <!-- Title -->
   <h1>WHAT I'M CURRENTLY READING</h1>
 
-  <div class="bookGallery" id="bookGallery" style="display:none;">
-      {% for book in page.books %}
-          <!-- 1st column Book-->
-          <div class="single_book_gallery_container">
-            <div class="book_image_container">
-              <!-- Image (use a variable for src instead of harcoded value)-->
-              <img class="book_image" src="/{{ book.url-path }}" alt="book title">
-            </div>
-            <div class="book_title_container">
-              <!-- Book title -->
-              <p>{{ book.title }}</p>
-            </div>
-          </div>
-      {% endfor %}
-  </div>
-
   <div class="bookSection" id="bookSection">
     <!-- 1st column Book-->
     <div class="single_book_container">
       <div class="book_image_container">
         <!-- Image (use a variable for src instead of harcoded value)-->
-        <img class="book_image" src="/assets/images/books/book0.png" alt="book title">
+        <img class="book_image" src="/{{ page.url-path }}" alt="book title">
       </div>
       <div class="book_title_container">
         <!-- Book title -->
-        <p>The Shadowed Sun</p>
+        <p>{{page.title}}</p>
       </div>
     </div>
     <!-- 2nd Column title & description-->
     <div class="title_description">
-      <p>The Shadowed Sun</p>
+      <p>{{page.title}}</p>
       <p>Lorem Ipsum Dolar Running Through The 6 With Drake
           Random Text That is Rapping Like Jay Z or Jay Dilla With
           Opacity Creeping Further Past Midnight And Then The Clock
@@ -54,7 +38,7 @@
     </div>
     <!-- 3rd href tab that loads gallery-->
     <div class="gallery_navigation">
-      <a class="navLink" href="#" onclick="hideBooks()">
+      <a class="navLink" href="/books" onclick="hideBooks()">
         <div class="navTextAndContainer">
           <p class="navText">MORE READS</p>
           <img src="/assets/images/icons/library_minimal_color.svg">

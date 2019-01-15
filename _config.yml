@@ -53,7 +53,7 @@ atom_feed:
 collections:
   books:
     output: true
-    permalink: /books/:path
+    permalink: /books/:name/
 
 # SEO Related
 google_site_verification :
