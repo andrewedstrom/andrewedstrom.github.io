@@ -1,19 +1,17 @@
 <script type="text/javascript">
-  function hideBooks(){
-    var bookSection = document.getElementById('bookSection');
-    //bookSection.style.display = "none";
+  function animContents(){
 
-    var gallerySection = document.getElementById('bookGallery');
-    //gallerySection.style.display = "flex";
-    //Add in Animation
-    console.log("Hide Book Section");
-    //console.log({{page.books}});
+    /* booksA contents*/
+    var contents = document.getElementById("booksA");
+    contents.className = "booksAAnim";
+
+    return false;
   }
 </script>
 
-<div class="books">
+<div class="booksA" id="booksA">
   <!-- Title -->
-  <h1>WHAT I'M CURRENTLY READING</h1>
+  <!-- <h1 style="text-align:center;">WHAT I'M CURRENTLY READING</h1> -->
 
   <div class="bookSection" id="bookSection">
     <!-- 1st column Book-->
@@ -29,7 +27,7 @@
     </div>
     <!-- 2nd Column title & description-->
     <div class="title_description">
-      <p>{{page.title}}</p>
+      <p>{{page.title}}<br />{{page.author}}</p>
       <p>Lorem Ipsum Dolar Running Through The 6 With Drake
           Random Text That is Rapping Like Jay Z or Jay Dilla With
           Opacity Creeping Further Past Midnight And Then The Clock
@@ -38,7 +36,7 @@
     </div>
     <!-- 3rd href tab that loads gallery-->
     <div class="gallery_navigation">
-      <a class="navLink" href="/books" onclick="hideBooks()">
+      <a class="navLink" href="/books" onclick="animContents()">
         <div class="navTextAndContainer">
           <p class="navText">MORE READS</p>
           <img src="/assets/images/icons/library_minimal_color.svg">

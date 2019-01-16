@@ -1,26 +1,34 @@
 <script type="text/javascript">
-  function hideBooks(){
-    var bookSection = document.getElementById('bookSection');
-    bookSection.style.display = "none";
+  function animBook(bookTitle){
 
-    var gallerySection = document.getElementById('bookGallery');
-    gallerySection.style.display = "flex";
-    //Add in Animation
-    console.log("Hide Book Section");
-    //console.log({{page.books}});
+    /* Fade Gallery Title*/
+    var galleryTitle = document.getElementById("galleryTitle");
+    galleryTitle.className = "galleryTitleAnim";
+
+    /* Fade/Transition other books in Gallery*/
+    var books = document.querySelectorAll("div.single_book_gallery_container");
+    for(i = 0; i < books.length; i++){
+      if((books[i].id) != bookTitle){
+        //alert("Match Found: " + bookTitle);
+        books[i].className = "single_book_gallery_container_anim";
+      }
+    }
+
+
+    return false;
   }
 </script>
 
-<div class="books">
+<div class="booksB">
   <!-- Title -->
-  <h1>WHAT I'M CURRENTLY READING</h1>
+  <h1 class="galleryTitle" id="galleryTitle" style="text-align:center;">WHAT I'M CURRENTLY READING</h1>
 
   <div class="bookGallery" id="bookGallery">
       {% for book in site.books %}
           <!-- 1st column Book-->
           <!-- <a href="{{book.permalink}}"> -->
-          <div class="single_book_gallery_container">
-            <a href="{{book.permalink}}">
+          <div class="single_book_gallery_container" id="{{book.title}}">
+            <a href="{{book.permalink}}" onclick="animBook('{{book.title}}')">
               <div class="book_image_container">
                 <!-- Image (use a variable for src instead of harcoded value)-->
                 <img class="book_image" src="/{{ book.url-path }}" alt="book title">

@@ -6,12 +6,69 @@
    Default
    ========================================================================== */
 
-.books {
+/*Single Book Container*/
+.booksA{
   display: flex;
   flex-direction: column;
   color: black;
-  background-color: #eaeaea;
+  /*background-color: #eaeaea;*/
+  color: #161719;
   font-family: Arial Black, sans-serif;
+}
+
+.booksAAnim{
+  display: flex;
+  flex-direction: column;
+  color: black;
+  /*background-color: #eaeaea;*/
+  color: #161719;
+  font-family: Arial Black, sans-serif;
+  animation: bookContainerAnim;
+  animation-timing-function: ease;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+}
+/* Single Book Container Animation*/
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes bookContainerAnim {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes bookContainerAnim {
+  from {opacity: 1; transform:translate(0px, 0px);}
+  to {opacity: 0; transform:translate(1400px, 0px);}
+}
+
+/*Gallery Container*/
+.booksB{
+  display: flex;
+  flex-direction: column;
+  color: black;
+  /*background-color: #eaeaea;*/
+  color: #161719;
+  font-family: Arial Black, sans-serif;
+  animation: booksBAnim;
+  animation-timing-function: ease;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/* Single Book Container Animation*/
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes booksBAnim {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes booksBAnim {
+  from {opacity: 0; transform:translate(0px, 1000px);}
+  to {opacity: 1; transform:translate(0px, 0px);}
 }
 
 .bookSection{
@@ -25,10 +82,38 @@
   flex-flow: wrap;
 }
 
+.galleryTitle{
+  text-align: center;
+  color:#eaeaea;
+  font-family: Arial Black, sans-serif;
+}
+
+
+.galleryTitleAnim{
+  animation: galleryBookTitle;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes galleryBookTitle {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes galleryBookTitle {
+  from {opacity: 1; transform:translate(0px, 0px);}
+  to {opacity: 0; transform:translate(0px, -250px);}
+}
+
+
 .title_description{
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
+  color: #eaeaea;
 }
 
 .single_book_container{
@@ -40,17 +125,114 @@
   width: 50%;
   height: auto;
   border-radius: 6px;
+  animation: bookEntranceAnim;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
 }
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes bookEntranceAnim {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes bookEntranceAnim {
+  from {opacity: 0; transform:translate(-250px, 0px);}
+  to {opacity: 1; transform:translate(0px, 0px);}
+}
+
+
+
+
 
 .single_book_gallery_container{
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  float:left;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  /*margin: 0;*/
+  width: 15%;
+  height: auto;
+  border-radius: 6px;
+  /*-webkit-transition: width 1s, height 1s, margin 1s;
+  -moz-transition: width 1s, height 1s, margin 1s;
+  -ms-transition: width 1s, height 1s, margin 1s;
+  transition: width 1s, height 1s, margin 1s;*/
+  animation: shrink;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+
+.single_book_gallery_container:hover{
+  animation: grow;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1.0);
+  }
+}
+
+.single_book_gallery_container_anim{
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
   margin-left: 50px;
   margin-bottom: 50px;
   width: 15%;
   height: auto;
   border-radius: 6px;
+
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0*/
+  -webkit-transition-property: all;
+  -webkit-animation-duration: .5s;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+  animation-name: example;
+  transition-property: all;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  -ms-transform: translate(0px,100px); /* IE 9 */
+  -webkit-transform: translate(0px,100px); /* Safari */
+  transform: translate(0px,100px); /* Standard syntax */
 }
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  from {opacity: 1; transform:translate(0px, 0px);}
+  to {opacity: 0; transform:translate(0px, -250px);}
+}
+
+
+
 
 .book_image{
   width: 100%;
